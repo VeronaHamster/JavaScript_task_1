@@ -1,0 +1,2 @@
+https://toddmotto.com/mastering-the-module-pattern/
+https://learn.javascript.ru/modules
