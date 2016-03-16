@@ -1,10 +1,10 @@
-function extend(Child, Parent) {
+/*function extend(Child, Parent) {
     var tempConstructor = function() {};
     tempConstructor.prototype = Parent.prototype;
     Child.prototype = new tempConstructor();
     Child.prototype.constructor = Child;
     Child.superclass = Parent.prototype;
-};
+};*/
 
 function BossMonster (name, health, damage) {
 	this.name = name;
@@ -27,7 +27,13 @@ function SeasonMonster(name, health, damage, season, day) {
 	this.day = day;
 };
 
-extend (SeasonMonster, BossMonster);
+ var tempConstructor = function() {};
+ tempConstructor.prototype = BossMonster.prototype;
+ SeasonMonster.prototype = new tempConstructor();
+ SeasonMonster.prototype.constructor = SeasonMonster;
+ SeasonMonster.superclass = BossMonster.prototype;
+
+//extend (SeasonMonster, BossMonster);
 
 SeasonMonster.prototype.information = function() {
 	BossMonster.prototype.information.apply(this);
