@@ -19,7 +19,10 @@ window.onload = function() {
         containers[i].innerHTML = tempString;
     }
 };
-
+var a = 10;
+	console.log(a.constructor);
+	var b = new Number(10);
+	console.log(b.constructor);
 var createString = function(boss) {
 	var temp = '';
 	if (boss instanceof myModule.BossMonster) {
@@ -34,4 +37,6 @@ var createString = function(boss) {
 		temp = 'Not this time, man, not this time';
 	}
 	return temp;
+	
+	
 }

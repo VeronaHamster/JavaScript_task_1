@@ -1,0 +1,23 @@
+
+.toggle-button {
+	width: 100px;
+	height: 100px;
+	border: 2px solid black;
+	margin: 10px;
+	float: left;
+	text-align: center;
+}
+
+.down {
+	background: red;
+}
+
+#for-button {
+    position: relative;
+    top: 150px;
+    left: 200px;
+}
+
+#for-toggle {
+    position: fixed;
+}
