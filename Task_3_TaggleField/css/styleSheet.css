@@ -1,0 +1,20 @@
+ul li {
+	list-style-type: none;
+}
+
+.toggle-input::-webkit-input-placeholder       {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.toggle-input::-moz-placeholder                {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.toggle-input:-moz-placeholder                 {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.toggle-input:-ms-input-placeholder            {text-indent: 0px;   transition: text-indent 0.3s ease;}
+.toggle-input:focus::-webkit-input-placeholder {text-indent: 500px; transition: text-indent 0.3s ease;}
+.toggle-input:focus::-moz-placeholder          {text-indent: 500px; transition: text-indent 0.3s ease;}
+.toggle-input:focus:-moz-placeholder           {text-indent: 500px; transition: text-indent 0.3s ease;}
+.toggle-input:focus:-ms-input-placeholder      {text-indent: 500px; transition: text-indent 0.3s ease;}
+
+.toggle-input {
+	border: none;
+}
+
+.input-textarea {
+	border: 10px;
+}
