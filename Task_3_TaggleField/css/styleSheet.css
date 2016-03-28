@@ -30,14 +30,14 @@ ul li {
 .toggle-input {
 	border: none;
 	outline:none;
-	 display:inline-block;
+	display:inline-block;
 }
 /*сделать изменяемый размер холдера*/
 input[type="text"] {
     border: none; /* Убираем рамку */
     outline: none; /* Убираем свечение в Chrome и Safari */
     -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
-    width: 50px; /* Ширина поля */
+	width: auto;
     vertical-align: middle; /* Выравнивание по середине */
     display:inline-block;
 }
