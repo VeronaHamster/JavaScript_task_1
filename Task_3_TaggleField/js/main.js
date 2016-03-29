@@ -1,6 +1,6 @@
 var tags = [];
-
-Array.prototype.forEach.call(document.querySelectorAll('.input-textarea'), function(el) {
+var inputTextarea = document.querySelectorAll('.input-textarea');
+Array.prototype.forEach.call(inputTextarea , function(el) {
 	var input = el.querySelector('input');
 	
 	conditionallyHideClearIcon();
@@ -26,10 +26,7 @@ Array.prototype.forEach.call(document.querySelectorAll('.input-textarea'), funct
 	}
   
 	el.querySelector('[data-clear-input]').addEventListener('click', function(e) {
-		input.value = '';
-		var temp = document.getElementById("container");
-		temp.remove();
-		tags = [];
+        removeAllElements(this);
 		conditionallyHideClearIcon();
 	});
 
@@ -37,29 +34,64 @@ Array.prototype.forEach.call(document.querySelectorAll('.input-textarea'), funct
 		var target = (e && e.target) || input;
 		target.nextElementSibling.style.display = target.value ? 'block' : 'none';
 	}
+
+	function removeAllElements(target) {
+        input.value = '';
+
+        //var temp =  target.parentNode.getElementById("container");
+        var temp =  target.parentNode.firstElementChild;
+
+        while (temp.hasChildNodes()) {
+            temp.removeChild(temp.lastChild);
+        }
+        //tags = [];
+	};
 });
 
-	//tags = document.querySelectorAll("tag");
-	document.getElementById('input-area').onkeypress = function(e){
-		if (!e) e = window.event;
-		var keyCode = e.keyCode || e.which;
-		if (keyCode == '13' && this.value){
-		  // Enter pressed
-			addElement(this.previousElementSibling, this, this.value);
-			this.value='';
-			this.size = 1;
-			return false;
-    }
-}
+
+    var len = inputTextarea.length;
+    for(var i=0;i<len;i++ ) {
+        inputTextarea[i].firstElementChild.nextElementSibling.onkeypress = function(e){
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13' && this.value){
+                // Enter pressed
+                addElement(this.previousElementSibling, this, this.value);
+                this.value='';
+                this.size = 1;
+                return false;
+            }
+        };
+    };
+
+
 	//добавить крестик в спан
 	function addElement(parent, child, value) {
 		var span = document.createElement("span");
 		span.setAttribute('class',"tag");
+		var spanChild = document.createElement("span");
+		var spanX = document.createElement("span");
+		spanX.setAttribute('class',"remove");
+        spanX.setAttribute('onClick',"removeCurrent(this)");
+
+		var nodeX = document.createTextNode('x');
+
+
 		var node = document.createTextNode(value);
-		span.appendChild(node);
+		spanChild.appendChild(node);
+		spanX.appendChild(nodeX);
+		span.appendChild(spanChild);
+		span.appendChild(spanX);
 
-	   tags.push(parent.appendChild(span));
-	}
+	    tags.push(parent.appendChild(span));
+
+      //  spanX.onClick = removeCurrent(spanX);
+
+	  // span.lastChild.addEventListener('click', removeCurrent(this));
+	 // parent.lastChild.lastChild.addEventListener('click', removeCurrent(parent.lastChild));
+	};
 
 
-
+    function removeCurrent(el) {
+        el.parentNode.remove();
+    };
